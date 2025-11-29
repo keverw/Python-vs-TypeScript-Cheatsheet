@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python vs TypeScript Cheatsheet</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --bg-color: #1e1e1e;
+            --text-color: #d4d4d4;
+            --header-bg: #252526;
+            --border-color: #333;
+            --accent-color: #007acc;
+            --py-color: #3572A5;
+            --ts-color: #2b7489;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            background: #2d2d2d;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            padding: 15px 20px;
+            background: #333;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .col {
+            padding: 0;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .col:last-child {
+            border-right: none;
+        }
+
+        .col-header {
+            padding: 10px 20px;
+            font-weight: bold;
+            background: #252526;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .py-header {
+            color: #4B8BBE;
+        }
+
+        .ts-header {
+            color: #3178C6;
+        }
+
+        .code-block {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0 !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        th,
+        td {
+            padding: 12px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #252526;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .col {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Python vs TypeScript Cheatsheet</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- Casing & Naming -->
+        <div class="section">
+            <div class="section-header">1. Casing & Naming Conventions</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python (PEP 8)</div>
+                    <table>
+                        <tr>
+                            <td>Variables</td>
+                            <td><code>snake_case</code></td>
+                        </tr>
+                        <tr>
+                            <td>Functions</td>
+                            <td><code>snake_case</code></td>
+                        </tr>
+                        <tr>
+                            <td>Classes</td>
+                            <td><code>PascalCase</code></td>
+                        </tr>
+                        <tr>
+                            <td>Constants</td>
+                            <td><code>UPPER_SNAKE_CASE</code></td>
+                        </tr>
+                        <tr>
+                            <td>Private</td>
+                            <td><code>_internal_var</code></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <table>
+                        <tr>
+                            <td>Variables</td>
+                            <td><code>camelCase</code></td>
+                        </tr>
+                        <tr>
+                            <td>Functions</td>
+                            <td><code>camelCase</code></td>
+                        </tr>
+                        <tr>
+                            <td>Classes</td>
+                            <td><code>PascalCase</code></td>
+                        </tr>
+                        <tr>
+                            <td>Constants</td>
+                            <td><code>UPPER_SNAKE_CASE</code></td>
+                        </tr>
+                        <tr>
+                            <td>Private</td>
+                            <td><code>private internalVar</code></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Variables & Types -->
+        <div class="section">
+            <div class="section-header">2. Variables & Types</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python"># Dynamic typing
+x = 10
+name = "Alice"
+is_active = True
+
+# With Type Hints
+count: int = 5
+messages: list[str] = ["hello"]
+
+# Primitive Types
+# int, float, str, bool, None
+# list, dict, set, tuple</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">// Static typing
+let x: number = 10;
+const name: string = "Alice";
+let isActive: boolean = true;
+
+// Type Inference
+let count = 5;
+const messages: string[] = ["hello"];
+
+// Primitive Types
+// number, string, boolean, null, undefined
+// Array<T>, object, Set<T>, [T, T]</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Structures -->
+        <div class="section">
+            <div class="section-header">3. Data Structures</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python"># List (Array)
+items = [1, 2, 3]
+items.append(4)
+first = items[0]
+
+# Dictionary (Map/Object)
+data = {"a": 1, "b": 2}
+data["c"] = 3
+val = data.get("a")
+keys = data.keys()
+
+# Set (Unique)
+unique = {1, 2, 2, 3}
+unique.add(4)</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">// Array
+const items = [1, 2, 3];
+items.push(4);
+const first = items[0];
+
+// Object (Dictionary)
+const data: Record<string, number> = { a: 1, b: 2 };
+data["c"] = 3;
+const val = data["a"];
+const keys = Object.keys(data);
+
+// Map (Ordered Key-Value)
+const map = new Map([["a", 1]]);
+map.set("b", 2);
+
+// Set (Unique)
+const unique = new Set([1, 2, 2, 3]);
+unique.add(4);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type Checking -->
+        <div class="section">
+            <div class="section-header">4. Type Checking</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python"># Check type
+type(x) == int
+isinstance(x, int)
+
+# Check inheritance
+issubclass(Dog, Animal)</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">// Check primitive type
+typeof x === 'number'
+
+// Check class instance
+x instanceof Dog</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Flow -->
+        <div class="section">
+            <div class="section-header">5. Control Flow</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python"># If / Else
+if x > 10:
+    print("Big")
+elif x == 10:
+    print("Ten")
+else:
+    print("Small")
+
+# Match (Switch)
+match status:
+    case 200: print("OK")
+    case _: print("Unknown")
+
+# Loops
+for i in range(5):
+    print(i)
+
+for item in items:
+    print(item)</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">// If / Else
+if (x > 10) {
+    console.log("Big");
+} else if (x === 10) {
+    console.log("Ten");
+} else {
+    console.log("Small");
+}
+
+// Switch
+switch (status) {
+    case 200: console.log("OK"); break;
+    default: console.log("Unknown");
+}
+
+// Loops
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+for (const item of items) {
+    console.log(item);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Functions -->
+        <div class="section">
+            <div class="section-header">6. Functions</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python">def add(a: int, b: int) -> int:
+    return a + b
+
+# Default args
+def greet(name="User"):
+    print(f"Hello {name}")
+
+# Lambda
+square = lambda x: x * x</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">function add(a: number, b: number): number {
+    return a + b;
+}
+
+// Default args
+function greet(name: string = "User"): void {
+    console.log(`Hello ${name}`);
+}
+
+// Arrow Function
+const square = (x: number): number => x * x;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Classes -->
+        <div class="section">
+            <div class="section-header">7. Classes</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python">class Dog:
+    species = "Canis"
+
+    def __init__(self, name: str):
+        self.name = name
+        self._age = 0
+
+    def bark(self):
+        print(f"{self.name} says Woof!")
+
+    @property
+    def age(self):
+        return self._age</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">class Dog {
+    static species = "Canis";
+    public name: string;
+    protected age: number = 0;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    bark(): void {
+        console.log(`${this.name} says Woof!`);
+    }
+
+    get ageVal(): number {
+        return this.age;
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Async / Await -->
+        <div class="section">
+            <div class="section-header">8. Async / Await</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python">import asyncio
+
+async def fetch_data():
+    await asyncio.sleep(1)
+    return "Data"
+
+async def main():
+    data = await fetch_data()
+    print(data)
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">// Returns a Promise
+async function fetchData(): Promise<string> {
+    await new Promise(r => setTimeout(r, 1000));
+    return "Data";
+}
+
+async function main() {
+    const data = await fetchData();
+    console.log(data);
+}
+
+main();</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modules -->
+        <div class="section">
+            <div class="section-header">9. Modules</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python"># Import module
+import utils
+# Import specific
+from utils import helper
+# Alias
+from utils import helper as h
+
+utils.helper()</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">// Import all
+import * as utils from "./utils";
+// Import specific
+import { helper } from "./utils";
+// Alias
+import { helper as h } from "./utils";
+
+utils.helper();</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Package Management -->
+        <div class="section">
+            <div class="section-header">10. Package Management</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <table>
+                        <tr>
+                            <td>Config</td>
+                            <td><code>pyproject.toml</code> / <code>requirements.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td>Install</td>
+                            <td><code>pip install pkg</code></td>
+                        </tr>
+                        <tr>
+                            <td>Freeze</td>
+                            <td><code>pip freeze > requirements.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td>Install Frozen</td>
+                            <td><code>pip install -r requirements.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td>Virtual Env</td>
+                            <td><code>venv</code>, <code>conda</code></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <table>
+                        <tr>
+                            <td>Config</td>
+                            <td><code>package.json</code></td>
+                        </tr>
+                        <tr>
+                            <td>Install</td>
+                            <td><code>npm install pkg</code></td>
+                        </tr>
+                        <tr>
+                            <td>Freeze</td>
+                            <td><code>package-lock.json</code> (Automatic)</td>
+                        </tr>
+                        <tr>
+                            <td>Install Frozen</td>
+                            <td><code>npm ci</code></td>
+                        </tr>
+                        <tr>
+                            <td>Virtual Env</td>
+                            <td><code>node_modules</code></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Error Handling -->
+            <div class="section">
+                <div class="section-header">11. Error Handling</div>
+                <div class="comparison-grid">
+                    <div class="col">
+                        <div class="col-header py-header">Python</div>
+                        <div class="code-block">
+                            <pre><code class="language-python">try:
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+finally:
+    print("Cleanup")
+
+raise ValueError("Invalid")</code></pre>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header ts-header">TypeScript</div>
+                        <div class="code-block">
+                            <pre><code class="language-typescript">try {
+    throw new Error("Oops");
+} catch (e) {
+    console.log(e);
+} finally {
+    console.log("Cleanup");
+}
+
+throw new Error("Invalid");</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Environments -->
+            <div class="section">
+                <div class="section-header">12. Virtual Environments</div>
+                <div class="comparison-grid">
+                    <div class="col">
+                        <div class="col-header py-header">Python</div>
+                        <div class="code-block">
+                            <pre><code class="language-bash"># 1. Create (run once)
+python -m venv venv
+
+# 2. Activate
+# Windows
+venv\Scripts\activate
+# Mac / Linux
+source venv/bin/activate
+
+# 3. Deactivate
+deactivate</code></pre>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header ts-header">TypeScript</div>
+                        <div class="code-block">
+                            <pre><code class="language-text">Node.js installs dependencies locally
+to the project (node_modules) by default.
+
+No virtual environment needed.</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- String Manipulation -->
+            <div class="section">
+                <div class="section-header">13. String Manipulation</div>
+                <div class="comparison-grid">
+                    <div class="col">
+                        <div class="col-header py-header">Python</div>
+                        <div class="code-block">
+                            <pre><code class="language-python">name = "World"
+msg = f"Hello {name}"
+
+text = "Hello World"
+# Slicing [Start:End:Step]
+a = text[0:5]   # "Hello"
+b = text[:5]    # "Hello"
+c = text[6:]    # "World"
+d = text[6:11]  # "World"
+e = text[-1]    # "d"
+f = text[::-1]  # Reverse</code></pre>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-header ts-header">TypeScript</div>
+                        <div class="code-block">
+                            <pre><code class="language-typescript">const name = "World";
+const msg = `Hello ${name}`;
+
+const str = "Hello World";
+// Slice / Substring
+const a = str.slice(0, 5);
+const b = str.slice(0, 5);
+const c = str.slice(6);
+const d = str.slice(6, 11);
+const e = str.slice(-1);
+const f = str.split('').reverse().join('');</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+</body>
+
+</html>
