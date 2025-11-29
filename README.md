@@ -28,3 +28,7 @@ This cheatsheet bridges the gap between Python and TypeScript, providing a quick
 ## Contributing
 
 Feel free to open an issue or submit a pull request if you find any discrepancies or have suggestions for additional topics!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
