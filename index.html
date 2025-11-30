@@ -601,49 +601,16 @@ utils.helper();</code></pre>
                     </table>
                 </div>
             </div>
+        </div>
 
-            <!-- Error Handling -->
-            <div class="section">
-                <div class="section-header">11. Error Handling</div>
-                <div class="comparison-grid">
-                    <div class="col">
-                        <div class="col-header py-header">Python</div>
-                        <div class="code-block">
-                            <pre><code class="language-python">try:
-    result = 10 / 0
-except ZeroDivisionError as e:
-    print(f"Error: {e}")
-finally:
-    print("Cleanup")
-
-raise ValueError("Invalid")</code></pre>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="col-header ts-header">TypeScript</div>
-                        <div class="code-block">
-                            <pre><code class="language-typescript">try {
-    throw new Error("Oops");
-} catch (e) {
-    console.log(e);
-} finally {
-    console.log("Cleanup");
-}
-
-throw new Error("Invalid");</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Virtual Environments -->
-            <div class="section">
-                <div class="section-header">12. Virtual Environments</div>
-                <div class="comparison-grid">
-                    <div class="col">
-                        <div class="col-header py-header">Python</div>
-                        <div class="code-block">
-                            <pre><code class="language-bash"># 1. Create (run once)
+        <!-- Virtual Environments -->
+        <div class="section">
+            <div class="section-header">11. Virtual Environments</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-bash"># 1. Create (run once)
 python -m venv venv
 
 # 2. Activate
@@ -654,28 +621,62 @@ source venv/bin/activate
 
 # 3. Deactivate
 deactivate</code></pre>
-                        </div>
                     </div>
-                    <div class="col">
-                        <div class="col-header ts-header">TypeScript</div>
-                        <div class="code-block">
-                            <pre><code class="language-text">Node.js installs dependencies locally
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-text">Node.js installs dependencies locally
 to the project (node_modules) by default.
 
 No virtual environment needed.</code></pre>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- String Manipulation -->
-            <div class="section">
-                <div class="section-header">13. String Manipulation</div>
-                <div class="comparison-grid">
-                    <div class="col">
-                        <div class="col-header py-header">Python</div>
-                        <div class="code-block">
-                            <pre><code class="language-python">name = "World"
+        <!-- Error Handling -->
+        <div class="section">
+            <div class="section-header">12. Error Handling</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python">try:
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+finally:
+    print("Cleanup")
+
+raise ValueError("Invalid")</code></pre>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">try {
+    throw new Error("Oops");
+} catch (e) {
+    console.log(e);
+} finally {
+    console.log("Cleanup");
+}
+
+throw new Error("Invalid");</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- String Manipulation -->
+        <div class="section">
+            <div class="section-header">13. String Manipulation</div>
+            <div class="comparison-grid">
+                <div class="col">
+                    <div class="col-header py-header">Python</div>
+                    <div class="code-block">
+                        <pre><code class="language-python">name = "World"
 msg = f"Hello {name}"
 
 text = "Hello World"
@@ -686,12 +687,12 @@ c = text[6:]    # "World"
 d = text[6:11]  # "World"
 e = text[-1]    # "d"
 f = text[::-1]  # Reverse</code></pre>
-                        </div>
                     </div>
-                    <div class="col">
-                        <div class="col-header ts-header">TypeScript</div>
-                        <div class="code-block">
-                            <pre><code class="language-typescript">const name = "World";
+                </div>
+                <div class="col">
+                    <div class="col-header ts-header">TypeScript</div>
+                    <div class="code-block">
+                        <pre><code class="language-typescript">const name = "World";
 const msg = `Hello ${name}`;
 
 const str = "Hello World";
@@ -702,16 +703,16 @@ const c = str.slice(6);
 const d = str.slice(6, 11);
 const e = str.slice(-1);
 const f = str.split('').reverse().join('');</code></pre>
-                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
 </body>
 
 </html>
